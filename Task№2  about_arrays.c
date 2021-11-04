@@ -58,7 +58,7 @@ void main() {
 }
 
 
-
+//Улитка
 #define N 5
 int main(){
     int array[N][N];
