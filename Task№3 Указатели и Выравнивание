@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+//Балуемся с указателями
+int main() {
+	int a = 270533154;
+	int* ptr = &a;
+	printf("The pointer points to a number: %d\n", *ptr);
+
+	printf("The first byte of the number: 0x%x\n", *((char*)ptr) );
+	printf("The second byte of the number: 0x%x\n", *(((char*)ptr) + 1) );
+	printf("The third byte of the number: 0x%x\n", *(((char*)ptr) + 2) );
+	printf("The fourth byte of the number: 0x%x\n", *(((char*)ptr) + 3) );
+
+	//*ptr = 0xFF;//изменим первый байт числа, остальные нули тк указатель int
+	//*((char*)ptr) = 0xFF;//изменим первый байт числа, остальные не тронуты тк указатель char
+	*(((char*)ptr)+2) = 0xFF; //изменим 3 байт числа, остальные не затронуты
+
+	return 0;
+}
+
+
+//Смотрим на выравнивание и добивание памяти в структурах
+int main() {
+	struct MyStruct1 {
+		int a;
+		char b;
+	};
+	struct MyStruct1 MyStruct1[] = { {1,2}, {3,4} };
+	printf("MyStruct1 size: %d\n", sizeof(struct MyStruct1));
+
+
+	struct test1{
+		char a;
+		int b;
+		char c;
+		int d;
+	};
+	struct test2 {
+		int a;
+		int b;
+		char c;
+		char d;
+	};
+	struct test1 test1[] = { {1,2,3,4}, {5,6,7,8} }; //4+4+4+4=16 байт  https://imgur.com/a/Wwhm0Jh
+	struct test2 test2[] = { {1,2,3,4}, {5,6,7,8} }; //4+4+4=12 байт  https://imgur.com/a/RcA8D4J
+	printf("test1 size: %d\n", sizeof(struct test1));
+	printf("test2 size: %d\n", sizeof(struct test2));
+
+
+	
+	struct bitField {
+		unsigned char a0 : 1;
+		unsigned char a1 : 1;
+		unsigned char a2 : 1;
+		unsigned char a3 : 1;
+	};
+	printf("bitField size: %d\n", sizeof(struct bitField)); //1 байт
+	struct bitField bitField[] = { {1,0,0,0}, {0,0,1,1} };
+	return 0;
+}
+
