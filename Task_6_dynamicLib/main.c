@@ -26,7 +26,7 @@ void printActionsAndGetValues(int *choice, int *value1, int *value2){
 }
 
 int main(){
-	void *library_handler = dlopen("./libArithmeticDyn.so",RTLD_LAZY);; //указатель на подгружаемую библиотеку
+	void *library_handler = dlopen("./libArithmeticDyn.so",RTLD_LAZY); //указатель на подгружаемую библиотеку
 	int (*func_ptr)(const int value1, const int value2) = NULL; //Указатель на ф-цию из дин библ
 
 	if (!library_handler){	printf("dlopen() error: %s\n", dlerror()); exit(1); }	//Если либу не открыли, заверш вып
