@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "pluginfunctions.h": "c",
+        "filesinfolder.h": "c",
+        "arithmetic_operations.h": "c",
+        "cmath": "c"
+    }
+}
