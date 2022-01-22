@@ -37,7 +37,7 @@ int main(void){
     while(1){
         readBytes = read(fd, readStrBuf, sizeof(readStrBuf));
         if(readBytes <= 0) break;
-        readStrBuf[readBytes] = '\n';
+        //readStrBuf[readBytes] = '\n';
         printf("%.*s",readBytes,readStrBuf); //.* - ограничение ширины поля = readBytes
     }
 
